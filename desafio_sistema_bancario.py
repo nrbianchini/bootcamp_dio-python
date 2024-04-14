@@ -16,13 +16,10 @@ while True:
     opcao = input(menu)
 
     if opcao == "d":
-        #criação de variável 'valor' que é pnt flutuante, recebida como entrada
         valor = float(input("informe o valor do depósito: "))
 
         if valor > 0:
-            #soma-se o valor depositado ao saldo
             saldo += valor
-            #adiciona-se ao extrato a seguinte informação:
             extrato += f"depósito: R${valor:.2f}\n"
 
         else:
@@ -31,11 +28,8 @@ while True:
     elif opcao == "s":
         valor = float(input("informe o valor do saque: "))
 
-        #valor de saque é maior que o saldo
         excedeu_saldo = valor > saldo
-        #valor de saque é maior que o limite
         excedeu_limite = valor > limite
-        #número de saques excedeu o limite diário
         excedeu_saques = numero_saques >= LIMITE_SAQUES
 
         if excedeu_saldo:
@@ -48,11 +42,8 @@ while True:
             print("operação falhou! número máximo de saques excedido.")
 
         elif valor > 0:
-            #diminui-se o valor sacado do saldo
             saldo -= valor
-            #adiciona-se ao extrato a seguinte informação:
             extrato += f"saque: R${valor:.2f}\n"
-            #aumenta o número de saques para controlar o limite
             numero_saques += 1
 
         else:
